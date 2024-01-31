@@ -1,37 +1,20 @@
-'''Write a Python function var_numbers(number, precision) that returns the variance of all positive integers up to and including number. The second parameter defines the precision of the result and has the default value of 2. Use round to approximate the result to the given precision.
+'''Write a Python function mask_data(data, n_characters, position) that receives a string data and returns the masked string in which the first or last n_characters characters are masked as an asterisk, according to position.
 
-Remember the formula of variance:
+The position admits two values: 'begin' — indicating that masking must consider the first n_characters characters of the original string — and 'end' — indicating that masking must consider the last n_characters of the original string.
 
-σ(x)=∑Ni=1(xi−x¯)2N
+If n_characters is zero then the function must return the original string. If n_characters is greater than the total of characters of the string or less than zero then the function must return all the characters masked by asterisks.'''
+import string
 
-where xi
- is the i-th element of the sequence 1,2,...,number
-, and x¯
- is the average of all those values.
-
-Hint: It is easier if you write an additional function sum_numbers(number) that returns the sum of all positive integers up to and including number and then use this function in the var_numbers function.
-print(var_numbers(3))
-0.67
-print(var_numbers(10, 1))
-8.2
-print(var_numbers(15, 3))
-18.667
-print(var_numbers(7))
-4.0
-'''
-
-def sum_numbers(num):
-    res = 0
-    for i in range(1, num + 1):
-        res += i
-    return res
-
-def var_numbers(num, precision = 2):
-    res = 0
-    res2 = sum_numbers(num) / num
-    for i in range(1, num + 1):
-        temp = (i - res2)**2
-        res += temp
-    res = res / num
-
-    return round(res, precision)
+def mask_data(data, n_characters, position):
+    result = ""
+    if(n_characters == 0):
+        return data
+    
+    if(position == "begin"):
+        for i in range(0,n_characters+1):
+            result = n_characters * "*" + data[n_characters:]
+    else: 
+         for i in range(0,len(data)-n_characters): 
+             result = data[0:len(data)-n_characters] + n_characters * "*"
+            
+    return result 
