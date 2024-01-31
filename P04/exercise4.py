@@ -5,18 +5,7 @@ The function receives 6 single character strings. Each string can be "b" for blu
 You should give 3 points for each user guess that is completely correct, that is, the same color at the same position in the key and 1 point if the user guessed the color right but at the wrong position (that is, the color exists in the key but at another wrong position).  See the tests for examples.
 
 Note that one right guess (position or color) counts only once.
-
-Por exemplo:
-
-Teste	Resultado
-print(mastermind("b", "w", "y", "b", "w", "y"))
-9
-print(mastermind("b", "b", "y", "b", "w", "b"))
-4
-print(mastermind("b", "w", "y", "w", "y", "w"))
-2
-print(mastermind("b", "b", "y", "y", "y", "b"))
-2'''
+'''
 def mastermind(g1, g2, g3, c1, c2, c3):
     points = 0
     
